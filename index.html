@@ -2,78 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StakeVault | Elite Crypto Staking Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StakeVault | Elite Crypto Staking</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(145deg, #000000, #1f1f1f);
+      background: linear-gradient(145deg, #000000, #1a1a1a);
       color: gold;
       overflow-x: hidden;
     }
+
     header {
       text-align: center;
       padding: 60px 20px;
       background: rgba(0, 0, 0, 0.9);
-      box-shadow: 0 2px 15px gold;
     }
-    header h1 {
+
+    h1 {
       font-size: 3em;
-      margin: 0;
-      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    .dashboard {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .card {
-      background: #111;
-      border: 1px solid gold;
-      border-radius: 10px;
-      padding: 20px;
+
+    p {
       font-size: 1.2em;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      color: #ccc;
     }
-    footer {
+
+    .staking-section {
       text-align: center;
-      padding: 30px;
-      font-size: 0.9em;
-      color: #aaa;
+      padding: 40px 20px;
+    }
+
+    .stake-btn {
+      background-color: gold;
+      border: none;
+      color: black;
+      padding: 15px 30px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    iframe {
+      width: 90%;
+      height: 500px;
+      margin: 40px auto;
+      display: block;
+      border: none;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>StakeVault 💰</h1>
-    <p>Elite Crypto Staking Platform with Live Dashboard</p>
+    <h1>🏆 StakeVault</h1>
+    <p>Elite Crypto Staking Platform</p>
   </header>
 
-  <section class="dashboard">
-    <div class="card" id="btc">BTC: Loading...</div>
-    <div class="card" id="eth">ETH: Loading...</div>
-    <div class="card" id="bnb">BNB: Loading...</div>
-  </section>
+  <div class="staking-section">
+    <h2>Start Earning from Crypto</h2>
+    <button class="stake-btn">Start Staking</button>
+  </div>
 
-  <footer>
-    &copy; 2025 StakeVault. All rights reserved.
-  </footer>
-
-  <script>
-    async function loadPrices() {
-      const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd");
-      const data = await res.json();
-      document.getElementById("btc").innerText = "BTC: $" + data.bitcoin.usd;
-      document.getElementById("eth").innerText = "ETH: $" + data.ethereum.usd;
-      document.getElementById("bnb").innerText = "BNB: $" + data.binancecoin.usd;
-    }
-    loadPrices();
-    setInterval(loadPrices, 10000); // update every 10 seconds
-  </script>
+  <iframe src="https://mackenzie030596.github.io/Crypto-dashboard/"></iframe>
 </body>
 </html>
