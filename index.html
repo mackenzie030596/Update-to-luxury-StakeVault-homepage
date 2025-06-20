@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Dashboard</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .crypto { padding: 12px; border: 1px solid #ccc; margin-bottom: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h2>Live Crypto Dashboard</h2>
+  <div class="crypto" id="btc">BTC: Loading...</div>
+  <div class="crypto" id="eth">ETH: Loading...</div>
+  <div class="crypto" id="bnb">BNB: Loading...</div>
+
+  <script>
+    async function loadPrices() {
+      const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd");
+      const data = await res.json();
+      document.getElementById("btc").innerText = `BTC: $${data.bitcoin.usd}`;
+      document.getElementById("eth").innerText = `ETH: $${data.ethereum.usd}`;
+      document.getElementById("bnb").innerText = `BNB: $${data.binancecoin.usd}`;
+    }
+    loadPrices();
+    setInterval(loadPrices, 10000);
+  </script>
+</body>
+</html>
