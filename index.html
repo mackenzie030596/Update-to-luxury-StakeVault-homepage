@@ -1,28 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Crypto Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StakeVault | Elite Crypto Staking Platform</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    .crypto { padding: 12px; border: 1px solid #ccc; margin-bottom: 10px; border-radius: 6px; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #000000, #1f1f1f);
+      color: gold;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 15px gold;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .card {
+      background: #111;
+      border: 1px solid gold;
+      border-radius: 10px;
+      padding: 20px;
+      font-size: 1.2em;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  <h2>Live Crypto Dashboard</h2>
-  <div class="crypto" id="btc">BTC: Loading...</div>
-  <div class="crypto" id="eth">ETH: Loading...</div>
-  <div class="crypto" id="bnb">BNB: Loading...</div>
+  <header>
+    <h1>StakeVault 💰</h1>
+    <p>Elite Crypto Staking Platform with Live Dashboard</p>
+  </header>
+
+  <section class="dashboard">
+    <div class="card" id="btc">BTC: Loading...</div>
+    <div class="card" id="eth">ETH: Loading...</div>
+    <div class="card" id="bnb">BNB: Loading...</div>
+  </section>
+
+  <footer>
+    &copy; 2025 StakeVault. All rights reserved.
+  </footer>
 
   <script>
     async function loadPrices() {
       const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd");
       const data = await res.json();
-      document.getElementById("btc").innerText = `BTC: $${data.bitcoin.usd}`;
-      document.getElementById("eth").innerText = `ETH: $${data.ethereum.usd}`;
-      document.getElementById("bnb").innerText = `BNB: $${data.binancecoin.usd}`;
+      document.getElementById("btc").innerText = "BTC: $" + data.bitcoin.usd;
+      document.getElementById("eth").innerText = "ETH: $" + data.ethereum.usd;
+      document.getElementById("bnb").innerText = "BNB: $" + data.binancecoin.usd;
     }
     loadPrices();
-    setInterval(loadPrices, 10000);
+    setInterval(loadPrices, 10000); // update every 10 seconds
   </script>
 </body>
 </html>
